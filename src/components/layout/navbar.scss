@@ -1,0 +1,60 @@
+@import './../../styles/fonts';
+
+$navBarBackground: rgb(48, 48, 48);
+$navMenuHoverBackground: rgb(0, 0, 0);
+$hoverTextColor: white;
+$textColor: rgb(187, 187, 187);
+
+@mixin link-menu {
+  font-family: averta-regular;
+  width: max-content;
+  color: $textColor;
+  height: 100%;
+  display: inline-flex;
+  text-decoration: none;
+  align-items: center;
+}
+
+@mixin menu-hover-effect {
+  background-color: $navMenuHoverBackground;
+  color: $hoverTextColor;
+}
+
+.navbar {
+  background: $navBarBackground;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+
+  .nav {
+    display: flex;
+    height: 50px;
+  }
+
+  .nav-menu {
+    padding: 0 10px;
+    font-size: 14px;
+
+    a {
+      @include link-menu;
+    }
+
+    &:hover {
+      a,
+      & {
+        @include menu-hover-effect;
+      }
+    }
+  }
+
+  .nav-menu-title {
+    padding: 0 10px;
+    font-size: 20px;
+
+    a {
+      @include link-menu;
+    }
+  }
+}

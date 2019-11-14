@@ -26,5 +26,16 @@ main {
   min-height: 100%;
   max-width: 1250px;
   min-width: 250px;
-  margin: 0 auto;
+  margin: auto;
+}
+
+.layout-container {
+  margin: 40px auto;
+}
+
+.primary {
+  cursor: pointer;
+  padding: 5px;
+  margin-top: 5px;
+  width: auto;
 }

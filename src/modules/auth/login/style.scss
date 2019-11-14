@@ -32,7 +32,8 @@
     flex: 1;
   }
 
-  input {
+  input[type='text'],
+  input[type='password'] {
     flex: 1;
     outline: none;
     border: none;
@@ -42,5 +43,10 @@
     border-radius: 3px;
     border: 1px solid grey;
     font-family: averta-regular;
+  }
+
+  .error-container {
+    color: red;
+    font-size: 12px;
   }
 }

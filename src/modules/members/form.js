@@ -19,15 +19,19 @@ const Form = ({ data, onSubmit }) => {
         name: string().required('Name is Required'),
         section1: string()
           .required('1st is Required')
+          .max(3, 'maximum 3 digit number')
           .matches(/^[0-9]*$/, 'Only Integer value'),
         section2: string()
           .required('2nd is Required')
+          .max(3, 'maximum 3 digit number')
           .matches(/^[0-9]*$/, 'Only Integer value'),
         section3: string()
           .required('3rd is Required')
+          .max(3, 'maximum 3 digit number')
           .matches(/^[0-9]*$/, 'Only Integer value'),
         section4: string()
           .required('4th is Required')
+          .max(3, 'maximum 3 digit number')
           .matches(/^[0-9]*$/, 'Only Integer value'),
         joinDate: string().required('Joining date required'),
         status: string().required('Select the Status')
@@ -36,6 +40,7 @@ const Form = ({ data, onSubmit }) => {
       {({
         values,
         errors,
+        isValid,
         touched,
         handleBlur,
         handleChange,
@@ -135,7 +140,12 @@ const Form = ({ data, onSubmit }) => {
           </div>
           <br />
           <div className="input-row">
-            <input type="submit" className="secondary-btn" value="Submit" />
+            <input
+              type="submit"
+              className="secondary-btn"
+              disabled={!isValid}
+              value="Submit"
+            />
           </div>
         </form>
       )}

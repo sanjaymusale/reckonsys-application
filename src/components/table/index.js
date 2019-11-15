@@ -5,7 +5,7 @@ const Table = ({ data, headers, rowData }) => {
   return (
     <table>
       <tbody>
-        <tr class="thead">
+        <tr className="thead">
           {headers.map((header, i) => (
             <th key={i} className="header">
               {header}
@@ -16,7 +16,7 @@ const Table = ({ data, headers, rowData }) => {
           return (
             <tr key={index}>
               {rowData.map((rows, index) => (
-                <td key={index} className={rows === 'id' && 'header'}>
+                <td key={index} className={rows === 'id' ? 'header' : ''}>
                   {item[rows]}
                 </td>
               ))}

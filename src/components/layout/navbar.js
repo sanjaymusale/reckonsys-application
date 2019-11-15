@@ -1,24 +1,37 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './navbar.scss';
 
-const AdminMenu = () => {
+const AdminMenu = ({ pathname }) => {
   return (
     <React.Fragment>
       <div className="nav-menu-title">
-        <Link>Admin Section</Link>
+        <Link to="/">Admin Section</Link>
       </div>
-      <div className="nav-menu">
+      <div
+        className={`nav-menu 
+        ${pathname.includes('/members') ? 'active' : ''}`}
+      >
         <Link to="/members">Members</Link>
       </div>
-      <div className="nav-menu">
+      <div
+        className={`nav-menu 
+        ${pathname.includes('/products') ? 'active' : ''}`}
+      >
         <Link to="/products">Products</Link>
       </div>
-      <div className="nav-menu">
+      <div
+        className={`nav-menu 
+        ${pathname.includes('/reporting') ? 'active' : ''}`}
+      >
         <Link to="/reporting">Reporting</Link>
       </div>
-      <div className="nav-menu">
+      <div
+        className={`nav-menu 
+        ${pathname.includes('/users') ? 'active' : ''}`}
+      >
         <Link to="/users">Users</Link>
       </div>
     </React.Fragment>
@@ -36,14 +49,14 @@ const NavBar = props => {
               <Link to="/">Reckonsys</Link>
             </div>
           ) : (
-            <AdminMenu />
+            <AdminMenu pathname={props.location.pathname} />
           )}
         </div>
         <div className="nav">
           {user.isAuthenticated && (
             <React.Fragment>
-              <div className="nav-menu">
-                <Link>{user.user}</Link>
+              <div className="nav-menu active">
+                <a>{user.user}</a>
               </div>
               <div className="nav-menu">
                 <Link to="/logout">Logout</Link>
@@ -68,4 +81,4 @@ const mapStateToProps = state => {
     user: state.users
   };
 };
-export default connect(mapStateToProps)(NavBar);
+export default withRouter(connect(mapStateToProps)(NavBar));

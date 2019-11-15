@@ -13,6 +13,7 @@ $textColor: rgb(187, 187, 187);
   display: inline-flex;
   text-decoration: none;
   align-items: center;
+  cursor: pointer;
 }
 
 @mixin menu-hover-effect {
@@ -37,7 +38,7 @@ $textColor: rgb(187, 187, 187);
   .nav-menu {
     padding: 0 10px;
     font-size: 14px;
-
+    margin: 0 5px;
     a {
       @include link-menu;
     }
@@ -56,6 +57,13 @@ $textColor: rgb(187, 187, 187);
 
     a {
       @include link-menu;
+    }
+  }
+
+  .active {
+    background-color: $navMenuHoverBackground;
+    a {
+      color: $hoverTextColor;
     }
   }
 }

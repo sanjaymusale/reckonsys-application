@@ -60,3 +60,47 @@ main {
     transform: translateY(1px);
   }
 }
+
+.input-row {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+
+  .label {
+    height: 21px;
+    margin-bottom: 5px;
+    line-height: 21px;
+    font-size: 14px;
+    color: black;
+    flex: 1;
+  }
+
+  input[type='text'],
+  input[type='password'] {
+    flex: 1;
+    outline: none;
+    border: none;
+    background: #fcfcfc;
+    padding: 5px 0 5px 5px;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    border: 1px solid grey;
+    font-family: averta-regular;
+  }
+}
+
+.row {
+  flex-direction: row;
+}
+
+.section {
+  input {
+    margin-bottom: 8px;
+  }
+}
+
+.error-container {
+  color: red;
+  font-size: 12px;
+  min-height: 18px;
+}

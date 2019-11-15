@@ -59,6 +59,7 @@
                 &:last-child {
                   border: 0px;
                 }
+
                 border-top: 0px;
                 border-bottom: 0px;
               }
@@ -87,5 +88,25 @@
     .header {
       color: blue;
     }
+  }
+
+  .status-active {
+    background-color: #4caf50;
+    color: white;
+    width: max-content;
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin: 2px auto;
+  }
+
+  .status-inactive {
+    background-color: #f54e31;
+    color: white;
+    width: max-content;
+    font-size: 12px;
+    padding: 2px 5px;
+    border-radius: 5px;
+    margin: 2px auto;
   }
 }

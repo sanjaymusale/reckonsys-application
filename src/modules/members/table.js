@@ -22,7 +22,7 @@ const MemberTable = ({ membersData }) => {
           </th>
           <th className="header">Join Date</th>
           <th className="header">Status</th>
-          <th className="header">Join</th>
+          <th className="header"></th>
         </tr>
         {membersData.map((member, index) => {
           return (
@@ -41,8 +41,18 @@ const MemberTable = ({ membersData }) => {
                 </table>
               </td>
               <td>{member.join_date}</td>
-              <td>{member.status}</td>
-              <td>Join</td>
+              <td>
+                <div
+                  className={
+                    member.status === 'active'
+                      ? 'status-active'
+                      : 'status-inactive'
+                  }
+                >
+                  {member.status}
+                </div>
+              </td>
+              <td></td>
             </tr>
           );
         })}

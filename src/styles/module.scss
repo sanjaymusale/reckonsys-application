@@ -1,4 +1,4 @@
-.members-container {
+.module-container {
   .header-title {
     font-size: 28px;
     font-family: averta-semibold;
@@ -45,7 +45,10 @@
       border-collapse: collapse;
       text-align: center;
       padding: 0;
-
+      background-color: rgb(253, 243, 228);
+      .thead {
+        background-color: rgb(233, 207, 165);
+      }
       tr {
         td,
         th {
@@ -70,7 +73,6 @@
                   border: 0px;
                   border-top: 1px solid black;
                 }
-
                 border-bottom: 0px;
               }
             }
@@ -81,6 +83,7 @@
         th {
           padding: 0;
           border: 1px solid black;
+          word-break: break-all;
         }
       }
     }
@@ -108,5 +111,27 @@
     padding: 2px 5px;
     border-radius: 5px;
     margin: 2px auto;
+  }
+
+  .edit-btn {
+    cursor: pointer;
+    padding: 0px 13px;
+    width: max-content;
+    text-align: center;
+    font-size: 14px;
+    outline: none;
+    color: #fff;
+    background-color: #4c56af;
+    border: none;
+    border-radius: 5px;
+
+    &:hover {
+      background-color: #3c458f;
+    }
+
+    &:active {
+      background-color: #3c458f;
+      transform: translateY(0.5px);
+    }
   }
 }

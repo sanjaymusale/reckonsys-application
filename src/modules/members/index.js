@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
-import './members.scss';
+import './../../styles/module.scss';
 import membersData from './membersData';
 import MemberTable from './table';
 import AddMember from './addMember';
+import EditMember from './editMember';
 
 const Member = () => {
   const [initialData, setInitialData] = useState(membersData);
   const [members, setMembers] = useState(membersData);
   const [filterValue, setFilterValue] = useState('');
-  const [modal, setModal] = useState(false);
+  const [addModal, setAddModal] = useState(false);
+  const [editModal, setEditModal] = useState(false);
+  const [editMember, setEditMember] = useState({});
 
-  const toggle = () => setModal(!modal);
+  const addToggle = () => setAddModal(!addModal);
+  const editToggle = () => setEditModal(!editModal);
+
+  const openEditModal = member => {
+    setEditMember(member);
+    editToggle();
+  };
 
   const filterTable = () => {
     const filteredMembers = initialData.filter(member =>
@@ -19,13 +28,29 @@ const Member = () => {
     setMembers(filteredMembers);
   };
 
+  const onUpdate = value => {
+    const updatedMember = {
+      id: editMember.id,
+      name: value.name,
+      sections: [
+        value.section1,
+        value.section2,
+        value.section3,
+        value.section4
+      ],
+      join_date: value.joinDate,
+      status: value.status
+    };
+    const updatedData = members.map(member => {
+      if (member.id === editMember.id) return updatedMember;
+      return member;
+    });
+    setMembers(updatedData);
+    setInitialData(updatedData);
+    editToggle();
+  };
+
   const onSubmit = values => {
-    let status;
-    if (values.status.length) {
-      status = 'active';
-    } else {
-      status = 'inactive';
-    }
     const memberToAdd = {
       id: Math.floor(Math.random() * 10),
       name: values.name,
@@ -36,16 +61,16 @@ const Member = () => {
         values.section4
       ],
       join_date: values.joinDate,
-      status
+      status: values.status
     };
     setMembers([...members, memberToAdd]);
     setInitialData([...initialData, memberToAdd]);
-    toggle();
+    addToggle();
   };
 
   return (
     <div className="container">
-      <div className="members-container">
+      <div className="module-container">
         <div className="header-title">Members List</div>
         <div className="top-section">
           <div className="filter">
@@ -61,14 +86,20 @@ const Member = () => {
               <button onClick={filterTable}>Filter</button>
             </div>
           </div>
-          <button className="secondary-btn" onClick={toggle}>
+          <button className="secondary-btn" onClick={addToggle}>
             Create Member
           </button>
         </div>
         <div className="table-data">
-          <MemberTable membersData={members} />
+          <MemberTable membersData={members} openEditModal={openEditModal} />
         </div>
-        <AddMember toggle={toggle} modal={modal} onSubmit={onSubmit} />
+        <AddMember toggle={addToggle} modal={addModal} onSubmit={onSubmit} />
+        <EditMember
+          toggle={editToggle}
+          modal={editModal}
+          onSubmit={onUpdate}
+          editingData={editMember}
+        />
       </div>
     </div>
   );

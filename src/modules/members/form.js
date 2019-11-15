@@ -2,17 +2,17 @@ import React from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 
-const Form = ({ edit, onSubmit }) => {
+const Form = ({ data, onSubmit }) => {
   return (
     <Formik
       initialValues={{
-        name: '',
-        section1: '',
-        section2: '',
-        section3: '',
-        section4: '',
-        joinDate: '',
-        status: ''
+        name: (data && data.name) || '',
+        section1: data && data.sections.length ? data.sections[0] : '',
+        section2: data && data.sections.length ? data.sections[1] : '',
+        section3: data && data.sections.length ? data.sections[2] : '',
+        section4: data && data.sections.length ? data.sections[3] : '',
+        joinDate: (data && data.join_date) || '',
+        status: (data && data.status) || ''
       }}
       onSubmit={value => onSubmit(value)}
       validationSchema={object().shape({
@@ -29,7 +29,8 @@ const Form = ({ edit, onSubmit }) => {
         section4: string()
           .required('4th is Required')
           .matches(/^[0-9]*$/, 'Only Integer value'),
-        joinDate: string().required('Joining date required')
+        joinDate: string().required('Joining date required'),
+        status: string().required('Select the Status')
       })}
     >
       {({
@@ -118,17 +119,21 @@ const Form = ({ edit, onSubmit }) => {
 
           <div className="input-row row">
             <div>Status :</div>&nbsp;&nbsp;
-            <label>
-              <input
-                id="status"
-                type="checkbox"
-                name="status"
-                value="active"
-                onChange={handleChange}
-              />
-              Active
-            </label>
+            <select
+              id="status"
+              onChange={handleChange}
+              defaultValue={values.status}
+              onBlur={handleBlur}
+            >
+              <option value="">Select Status</option>
+              <option value="active">Active</option>
+              <option value="inactive">InActive</option>
+            </select>
           </div>
+          <div className="error-container">
+            {errors.status && touched.status && errors.status}
+          </div>
+          <br />
           <div className="input-row">
             <input type="submit" className="secondary-btn" value="Submit" />
           </div>

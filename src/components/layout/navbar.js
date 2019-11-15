@@ -10,16 +10,16 @@ const AdminMenu = () => {
         <Link>Admin Section</Link>
       </div>
       <div className="nav-menu">
-        <Link>Members</Link>
+        <Link to="/members">Members</Link>
       </div>
       <div className="nav-menu">
-        <Link>Products</Link>
+        <Link to="/products">Products</Link>
       </div>
       <div className="nav-menu">
-        <Link>Reporting</Link>
+        <Link to="/reporting">Reporting</Link>
       </div>
       <div className="nav-menu">
-        <Link>Users</Link>
+        <Link to="/users">Users</Link>
       </div>
     </React.Fragment>
   );
@@ -46,7 +46,7 @@ const NavBar = props => {
                 <Link>{user.user}</Link>
               </div>
               <div className="nav-menu">
-                <Link>Logout</Link>
+                <Link to="/logout">Logout</Link>
               </div>
             </React.Fragment>
           )}

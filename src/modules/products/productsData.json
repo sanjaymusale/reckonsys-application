@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "samsung galaxy s9",
+    "brand": "samsung",
+    "price": 14999
+  },
+  {
+    "id": 2,
+    "name": "vivo z1 pro",
+    "brand": "vivo",
+    "price": 20000
+  },
+  {
+    "id": 3,
+    "name": "oppo k1",
+    "brand": "oppo",
+    "price": 25000
+  },
+  {
+    "id": 4,
+    "name": "one plus 6",
+    "brand": "one plus",
+    "price": 50000
+  }
+]

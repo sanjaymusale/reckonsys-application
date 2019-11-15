@@ -1,17 +1,17 @@
 import React from 'react';
 
-const MemberTable = ({ membersData }) => {
+const MemberTable = ({ membersData, openEditModal }) => {
   return (
     <table>
       <tbody>
-        <tr>
+        <tr className="thead">
           <th className="header">ID</th>
           <th className="header">Name</th>
           <th>
             Sections
             <table>
               <tbody>
-                <tr>
+                <tr className="thead">
                   <th>1st</th>
                   <th>2nd</th>
                   <th>3rd</th>
@@ -52,7 +52,14 @@ const MemberTable = ({ membersData }) => {
                   {member.status}
                 </div>
               </td>
-              <td></td>
+              <td>
+                <button
+                  className="edit-btn"
+                  onClick={() => openEditModal(member)}
+                >
+                  Edit
+                </button>
+              </td>
             </tr>
           );
         })}

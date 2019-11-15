@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './navbar.scss';
 
-const NavMenu = () => {
+const AdminMenu = () => {
   return (
     <React.Fragment>
+      <div className="nav-menu-title">
+        <Link>Admin Section</Link>
+      </div>
       <div className="nav-menu">
         <Link>Members</Link>
       </div>
@@ -21,27 +25,47 @@ const NavMenu = () => {
   );
 };
 
-const NavBar = () => {
+const NavBar = props => {
+  const { user } = props;
   return (
     <div className="main navbar">
       <div className="container navbar-container">
         <div className="nav">
-          <div className="nav-menu-title">
-            <Link>Admin Section</Link>
-          </div>
-          <NavMenu />
+          {!user.isAuthenticated ? (
+            <div className="nav-menu-title">
+              <Link to="/">Reckonsys</Link>
+            </div>
+          ) : (
+            <AdminMenu />
+          )}
         </div>
         <div className="nav">
-          <div className="nav-menu">
-            <Link>test user</Link>
-          </div>
-          <div className="nav-menu">
-            <Link>Logout</Link>
-          </div>
+          {user.isAuthenticated && (
+            <React.Fragment>
+              <div className="nav-menu">
+                <Link>{user.user}</Link>
+              </div>
+              <div className="nav-menu">
+                <Link>Logout</Link>
+              </div>
+            </React.Fragment>
+          )}
+          {!user.isAuthenticated && (
+            <React.Fragment>
+              <div className="nav-menu">
+                <Link to="/login">Login</Link>
+              </div>
+            </React.Fragment>
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default NavBar;
+const mapStateToProps = state => {
+  return {
+    user: state.users
+  };
+};
+export default connect(mapStateToProps)(NavBar);

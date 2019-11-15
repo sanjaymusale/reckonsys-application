@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import NavBar from './components/layout/navbar';
 import Layout from './components/layout';
 import LoginForm from './modules/auth/login';
@@ -10,7 +10,8 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Layout>
-        <LoginForm />
+        <Route path="/" exact />
+        <Route path="/login" component={LoginForm} />
       </Layout>
     </BrowserRouter>
   );

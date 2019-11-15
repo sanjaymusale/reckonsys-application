@@ -3,13 +3,13 @@ import { Formik } from 'formik';
 import { object, string } from 'yup';
 import './style.scss';
 
-const LoginForm = () => {
+const LoginForm = ({ onSubmit }) => {
   return (
     <div className="loginContainer">
       <div className="heading">Login</div>
       <Formik
         initialValues={{ email: '', password: '' }}
-        onSubmit={value => console.log(value)}
+        onSubmit={value => onSubmit(value)}
         validationSchema={object().shape({
           email: string()
             .email('Invalid Email')
@@ -27,7 +27,7 @@ const LoginForm = () => {
       >
         {({
           values,
-          valid,
+          isValid,
           touched,
           errors,
           handleSubmit,
@@ -43,10 +43,11 @@ const LoginForm = () => {
                 onChange={handleChange}
                 value={values.email}
                 onBlur={handleBlur}
+                autoFocus
               />
-              {errors.email && touched.email && (
-                <div className="error-container">{errors.email}</div>
-              )}
+              <div className="error-container">
+                {errors.email && touched.email && errors.email}
+              </div>
             </div>
             <div className="input-row">
               <div className="label">Password</div>
@@ -57,16 +58,16 @@ const LoginForm = () => {
                 value={values.password}
                 onBlur={handleBlur}
               />
-              {errors.password && touched.password && (
-                <div className="error-container">{errors.password}</div>
-              )}
+              <div className="error-container">
+                {errors.password && touched.password && errors.password}
+              </div>
             </div>
             <div className="input-row">
               <input
                 type="submit"
                 className="primary"
                 value="Sign In"
-                disabled={!valid}
+                disabled={!isValid}
               />
             </div>
           </form>

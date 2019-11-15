@@ -27,7 +27,7 @@ const MemberTable = ({ membersData, openEditModal }) => {
         {membersData.map((member, index) => {
           return (
             <tr key={index}>
-              <td className="header">{member.id}</td>
+              <td className="header">{index + 1}</td>
               <td>{member.name}</td>
               <td>
                 <table>

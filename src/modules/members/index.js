@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { uuid } from 'uuidv4';
 import './../../styles/module.scss';
 import membersData from './membersData';
 import MemberTable from './table';
@@ -52,7 +53,7 @@ const Member = () => {
 
   const onSubmit = values => {
     const memberToAdd = {
-      id: Math.floor(Math.random() * 10),
+      id: uuid(),
       name: values.name,
       sections: [
         values.section1,

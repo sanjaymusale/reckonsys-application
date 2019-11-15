@@ -1,0 +1,16 @@
+[
+  {
+    "id": 1,
+    "name": "Jane Doe",
+    "join_date": "09/06/12 10:41 PM",
+    "sections": [0, 0, 0, 0],
+    "status": "active"
+  },
+  {
+    "id": 2,
+    "name": "John Doee",
+    "join_date": "09/06/12 10:41 PM",
+    "sections": [1, 1, 1, 1],
+    "status": "active"
+  }
+]

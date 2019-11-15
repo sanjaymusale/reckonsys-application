@@ -39,3 +39,24 @@ main {
   margin-top: 10px;
   width: auto;
 }
+
+.secondary-btn {
+  cursor: pointer;
+  padding: 5px 13px;
+  width: max-content;
+  text-align: center;
+  outline: none;
+  color: #fff;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #3e8e41;
+  }
+
+  &:active {
+    background-color: #3e8e41;
+    transform: translateY(1px);
+  }
+}

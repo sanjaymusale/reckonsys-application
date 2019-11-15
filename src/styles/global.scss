@@ -1,5 +1,8 @@
 @import './fonts';
 
+$backgroundColor: rgb(223, 228, 238);
+$red: red;
+
 * {
   box-sizing: border-box;
 }
@@ -11,7 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  background-color: rgb(223, 228, 238);
+  background-color: $backgroundColor;
 }
 
 main {
@@ -34,17 +37,10 @@ main {
   margin: 40px auto;
 }
 
-.primary {
-  cursor: pointer;
-  padding: 5px;
-  margin-top: 10px;
-  width: auto;
-}
-
 .secondary-btn {
   cursor: pointer;
   padding: 5px 13px;
-  width: max-content;
+  width: auto;
   text-align: center;
   outline: none;
   color: #fff;
@@ -59,6 +55,10 @@ main {
   &:active {
     background-color: #3e8e41;
     transform: translateY(1px);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }
 
@@ -101,7 +101,11 @@ main {
 }
 
 .error-container {
-  color: red;
+  color: $red;
   font-size: 12px;
   min-height: 18px;
+}
+
+.center {
+  text-align: center;
 }

@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { object, string } from 'yup';
 import './style.scss';
 
-const LoginForm = ({ onSubmit }) => {
+const LoginForm = ({ onSubmit, errorMsg }) => {
+  const [showPassword, setShowPassword] = useState(false);
   return (
     <div className="loginContainer">
       <div className="heading">Login</div>
+      <div className="error-container center">{errorMsg && errorMsg}</div>
       <Formik
         initialValues={{ email: '', password: '' }}
         onSubmit={value => onSubmit(value)}
@@ -52,7 +54,7 @@ const LoginForm = ({ onSubmit }) => {
             <div className="input-row">
               <div className="label">Password</div>
               <input
-                type="text"
+                type={showPassword ? 'text' : 'password'}
                 id="password"
                 onChange={handleChange}
                 value={values.password}
@@ -61,11 +63,18 @@ const LoginForm = ({ onSubmit }) => {
               <div className="error-container">
                 {errors.password && touched.password && errors.password}
               </div>
+              <label className="show-password">
+                <input
+                  type="checkbox"
+                  onChange={() => setShowPassword(!showPassword)}
+                />
+                <span>Show Password</span>
+              </label>
             </div>
             <div className="input-row">
               <input
                 type="submit"
-                className="primary"
+                className="secondary-btn"
                 value="Sign In"
                 disabled={!isValid}
               />

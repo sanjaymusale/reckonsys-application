@@ -8,7 +8,7 @@ const AdminMenu = ({ pathname }) => {
   return (
     <React.Fragment>
       <div className="nav-menu-title">
-        <Link to="/">Admin Section</Link>
+        <Link to="/members">Admin Section</Link>
       </div>
       <div
         className={`nav-menu 

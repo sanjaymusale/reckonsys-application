@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from './components/layout/navbar';
 import Layout from './components/layout';
 import LoginForm from './modules/auth/login';
+import Home from './modules/home';
 import Member from './modules/members';
 import Products from './modules/products';
 import Reporting from './modules/reporting';
@@ -18,7 +19,7 @@ function App() {
       <NavBar />
       <Layout>
         <Switch>
-          <Route path="/" exact />
+          <Route path="/" component={Home} exact />
           <Route path="/login" component={LoginForm} exact />
           <Protected path="/members" component={Member} exact />
           <Protected path="/products" component={Products} exact />

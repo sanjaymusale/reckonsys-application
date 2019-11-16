@@ -112,7 +112,7 @@ const Form = ({ data, onSubmit }) => {
             <div className="label">Join Date</div>
             <input
               id="joinDate"
-              type="date"
+              type="text"
               value={values.joinDate}
               onChange={handleChange}
               onBlur={handleBlur}

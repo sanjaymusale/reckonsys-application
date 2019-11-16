@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MemberTable = ({ membersData, openEditModal }) => {
+const MemberTable = ({ membersData, openEditModal, deleteMember }) => {
   return (
     <table>
       <tbody>
@@ -58,6 +58,13 @@ const MemberTable = ({ membersData, openEditModal }) => {
                   onClick={() => openEditModal(member)}
                 >
                   Edit
+                </button>
+                <button
+                  className="edit-btn"
+                  style={{ marginLeft: '5px' }}
+                  onClick={() => deleteMember(member.id)}
+                >
+                  Delete
                 </button>
               </td>
             </tr>

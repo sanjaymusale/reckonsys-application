@@ -29,6 +29,14 @@ const Member = () => {
     setMembers(filteredMembers);
   };
 
+  const deleteMember = id => {
+    let confirmation = window.confirm('Are you sure , You want to delete!');
+    if (confirmation) {
+      const updatedMembers = initialData.filter(member => member.id !== id);
+      setMembers(updatedMembers);
+      setInitialData(updatedMembers);
+    }
+  };
   const onUpdate = value => {
     const updatedMember = {
       id: editMember.id,
@@ -92,7 +100,11 @@ const Member = () => {
           </button>
         </div>
         <div className="table-data">
-          <MemberTable membersData={members} openEditModal={openEditModal} />
+          <MemberTable
+            membersData={members}
+            openEditModal={openEditModal}
+            deleteMember={deleteMember}
+          />
         </div>
         <AddMember toggle={addToggle} modal={addModal} onSubmit={onSubmit} />
         <EditMember

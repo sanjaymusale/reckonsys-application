@@ -48,14 +48,16 @@
       background-color: white;
 
       tr {
+
         td,
         th {
           width: 50%;
           padding: 0;
 
-          & > table {
+          &>table {
             tr {
               td {
+
                 &:first-child,
                 &:last-child {
                   border: 0px;
@@ -66,11 +68,13 @@
               }
 
               th {
+
                 &:first-child,
                 &:last-child {
                   border: 0px;
                   border-top: 1px solid black;
                 }
+
                 border-bottom: 0px;
               }
             }
@@ -114,7 +118,7 @@
   .edit-btn {
     cursor: pointer;
     padding: 0px 13px;
-    width: max-content;
+    width: auto;
     text-align: center;
     font-size: 14px;
     outline: none;

@@ -2,15 +2,22 @@
   {
     "id": 1,
     "name": "Jane Doe",
-    "join_date": "09/06/12 10:41 PM",
+    "join_date": "12/03/2018",
     "sections": [0, 0, 0, 0],
     "status": "active"
   },
   {
     "id": 2,
     "name": "John Doee",
-    "join_date": "09/06/12 10:41 PM",
+    "join_date": "03/05/2018",
     "sections": [1, 1, 1, 1],
     "status": "inactive"
+  }
+  {
+    "id": 3,
+    "name": "karan kumar",
+    "join_date": "21/02/2019",
+    "sections": [11, 0, 3, 2],
+    "status": "active"
   }
 ]

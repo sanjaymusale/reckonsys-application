@@ -112,10 +112,11 @@ const Form = ({ data, onSubmit }) => {
             <div className="label">Join Date</div>
             <input
               id="joinDate"
-              type="text"
+              type="date"
               value={values.joinDate}
               onChange={handleChange}
               onBlur={handleBlur}
+              placeholder="DD/MM/YYYY"
             />
             <div className="error-container">
               {errors.joinDate && touched.joinDate && errors.joinDate}
